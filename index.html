@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> SRINIVAS PORTFOLIO </title>
+  <!-- Google Fonts and Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5, #4ade80, #facc15, #fb7185);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: #f0f0f0;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Navigation bar positioned top right */
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background: #fff;
+      height: 60px;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 8px #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1.5rem;
+      z-index: 50;
+      width: auto; /* adjust as needed */
+      min-width: 280px;
+    }
+    .logo {
+      margin-right: auto;
+      font-weight: 700;
+      font-size: 1.7rem;
+      color: #ad6d15;
+      cursor: default;
+      user-select: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 3px;
+    }
+    .nav-links li a.active,
+    .nav-links li a:hover {
+      color: #ad6d15;
+      border-bottom: 2px solid #ad6d15;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 2rem;
+      color: #ad6d15;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        min-width: 100%;
+        width: 100%;
+        padding: 0 2rem;
+        justify-content: space-between;
+      }
+      .nav-links {
+        position: fixed;
+        right: 0;
+        top: 60px;
+        height: calc(100vh - 60px);
+        flex-direction: column;
+        justify-content: flex-start;
+        background: #ad6d15ee;
+        width: 240px;
+        align-items: flex-start;
+        transform: translateX(100%);
+        transition: transform 0.3s;
+        gap: 0;
+        padding: 2rem 1rem;
+        z-index: 99;
+      }
+      .nav-links.open {
+        transform: translateX(0);
+      }
+      .nav-links li {
+        width: 100%;
+      }
+      .nav-links li a {
+        color: #fff;
+        font-size: 1.2rem;
+        display: block;
+        width: 100%;
+        padding: 0.8rem 0;
+      }
+      .hamburger {
+        display: block;
+      }
+      .logo {
+        margin-right: 0;
+      }
+    }
+
+    section {
+      max-width: 980px;
+      margin: auto;
+      padding: 5rem 2rem 0 2rem;
+    }
+    #home {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      min-height: 96vh;
+      gap: 2rem;
+    }
+    #home .image {
+      flex: 1 1 280px;
+      text-align: center;
+    }
+    #home .image img {
+      width: 220px;
+      border-radius: 50%;
+      box-shadow: 0 3px 30px #ad6d1555;
+    }
+    #home .intro {
+      flex: 2 1 340px;
+    }
+    #home h1 {
+      font-size: 2.2rem;
+    }
+    .typewriter {
+      font-size: 1.5rem;
+      color: #ad6d15;
+      font-weight: 700;
+      margin: 0.5rem 0 1.2rem 0;
+    }
+
+    .btn {
+      background: #ad6d15;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.7rem;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #fff;
+      color: #ad6d15;
+      border: 2px solid #ad6d15;
+    }
+    .social-icons {
+      margin: 1.2rem 0;
+      display: flex;
+      gap: 1rem;
+    }
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: #ad6d15;
+      border: 2px solid #ad6d15;
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      transition: 0.2s;
+    }
+    .social-icons a:hover {
+      background: #ad6d15;
+      color: #fff;
+    }
+    h2 {
+      color: #ad6d15;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    #about p {
+      font-size: 1.1rem;
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+    }
+    #skills ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    #skills li {
+      background: #ad6d15cc;
+      color: #fff;
+      font-weight: 600;
+      padding: 0.9rem 1.9rem;
+      font-size: 1rem;
+      border-radius: 18px;
+      transition: 0.2s;
+      box-shadow: 0 0 10px #ad6d1533;
+      display: flex;
+      align-items: center;
+    }
+    #skills li:hover {
+      transform: scale(1.09);
+    }
+    #skills li i {
+      margin-right: 8px;
+      font-size: 1.2rem;
+      vertical-align: middle;
+    }
+    #services .cards,
+    #projects .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .service {
+      flex: 1 1 220px;
+      min-width: 215px;
+      background: #fff6ec;
+      border: 2px solid #ad6d15;
+      padding: 2rem 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: 0.2s;
+      box-shadow: 0 2px 12px #ad6d1530;
+      color: #262626;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .service i {
+      color: #ad6d15;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .service:hover {
+      box-shadow: 0 6px 20px #ad6d1526;
+    }
+    #contact form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: #fff6ec;
+      border-radius: 10px;
+      padding: 2rem;
+      border: 1px solid #ad6d1529;
+      color: #262626;
+    }
+    #contact input, #contact textarea {
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1.5px solid #ad6d15aa;
+      resize: vertical;
+      transition: border-color 0.2s;
+      color: #262626;
+    }
+    #contact input:focus, #contact textarea:focus {
+      outline: none;
+      border-color: #ad6d15;
+    }
+    .section-pad {
+      padding-bottom: 80px;
+    }
+    @media (max-width: 650px) {
+      #home {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 4rem;
+      }
+      #home .image img {
+        width: 150px;
+      }
+      #skills ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .service {
+        padding: 1.2rem 0.6rem;
+      }
+      section {
+        padding: 3rem 1rem 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">SRINIVAS</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="image"><img src="WhatsApp Image 2025-07-23 at 19.36.54_c019d54c copy.jpg" alt="Your photo" /></div>
+    <div class="intro">
+      <h1>Hello, I'm <span style="color:#ad6d15;">SRINIVAS</span></h1>
+      <div class="typewriter">I'm a <span class="typewriter-text"></span></div>
+      <p>
+        Passionate web developer and designer. I build beautiful, modern websites—let's work together!
+      </p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/blacklover_seenu?igsh=b3UxaDU4enBpenhp" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/srinivas-k-b9257232b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/share/16pe9ki56g/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://github.com/seenu123-k" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+      <a href="RESUME SEENU.pdf" download class="btn" aria-label="Download Resume">Download Resume</a>
+    </div>
+  </section>
+
+  <section id="about" class="section-pad">
+    <h2>About Me</h2>
+    <p>
+      Hi! I'm a passionate developer with experience in creating visually pleasing and user-friendly websites. I love to solve problems and bring ideas to life!
+    </p>
+  </section>
+
+  <section id="skills" class="section-pad">
+    <h2>Skills</h2>
+    <ul>
+      <li><i class="fab fa-html5" aria-hidden="true"></i> HTML5</li>
+      <li><i class="fab fa-css3-alt" aria-hidden="true"></i> CSS3</li>
+      <li><i class="fab fa-js-square" aria-hidden="true"></i> JavaScript</li>
+      <li><i class="fab fa-react" aria-hidden="true"></i> React</li>
+      <li><i class="fab fa-figma" aria-hidden="true"></i> Figma</li>
+      <li><i class="fab fa-node-js" aria-hidden="true"></i> Node.js</li>
+      <li><i class="fab fa-git-alt" aria-hidden="true"></i> Git &amp; <i class="fab fa-github" aria-hidden="true"></i> GitHub</li>
+    </ul>
+  </section>
+
+  <section id="services" class="section-pad">
+    <h2>Services</h2>
+    <div class="cards">
+      <div class="service">
+        <i class="fas fa-code"></i>
+        <h3>Web Development</h3>
+        <p>Modern, fast and responsive websites for your needs.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-paint-brush"></i>
+        <h3>UI/UX Design</h3>
+        <p>Eye-catching design with user-focused interfaces.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>App Design</h3>
+        <p>Mobile-first apps tailored for engagement and performance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section-pad">
+    <h2>Projects</h2>
+    <div class="cards">
+      <div class="service">
+        <i class="fas fa-folder-open"></i>
+        <h3>Project One</h3>
+        <p>A modern quiz game</p>
+        <a href="https://seenu123-k.github.io/Quiz-web-pages/" target="_blank" class="btn" aria-label="Project One Link">View Project</a>
+      </div>
+      <div class="service">
+        <i class="fas fa-folder-open"></i>
+        <h3>Project Two</h3>
+        <p>Nature medicine web pages and developed in HTML/CSS.</p>
+        <a href="https://seenu123-k.github.io/Medicine-info/" target="_blank" class="btn" aria-label="Project Two Link">View Project</a>
+      </div>
+      <div class="service">
+        <i class="fas fa-folder-open"></i>
+        <h3>Project Three</h3>
+        <p>A Simple Calculator on UI/UX and performance.</p>
+        <a href="https://seenu123-k.github.io/Simple-calculator/" target="_blank" class="btn" aria-label="Project Three Link">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section-pad">
+    <h2>Contact</h2>
+    <form action="mailto:your@email.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="How can I help?" required></textarea>
+      <button class="btn" type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.onclick = () => navLinks.classList.toggle('open');
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.onclick = () => navLinks.classList.remove('open');
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section');
+    const navs = document.querySelectorAll('.nav-link');
+    window.onscroll = () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (pageYOffset >= sec.offsetTop - 70) { current = sec.id; }
+      });
+      navs.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === `#${current}`) a.classList.add('active');
+      });
+    };
+
+    // Typewriter effect
+    window.onload = function() {
+      const texts = ["Developer", "Designer", "Freelancer"];
+      let textPos = 0, word = 0, typing = true;
+      const el = document.querySelector('.typewriter-text');
+      function type() {
+        if (typing) {
+          el.textContent += texts[word][textPos++];
+          if (textPos < texts[word].length) setTimeout(type, 110);
+          else { typing = false; setTimeout(type, 1200); }
+        } else {
+          el.textContent = el.textContent.slice(0, -1);
+          if (el.textContent.length > 0) setTimeout(type, 65);
+          else {
+            typing = true;
+            word = (word + 1) % texts.length;
+            textPos = 0;
+            setTimeout(type, 450);
+          }
+        }
+      }
+      type();
+    }
+  </script>
+</body>
+</html>
