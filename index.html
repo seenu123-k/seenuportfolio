@@ -24,30 +24,35 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Navigation bar positioned top right */
+    /* Navigation styles */
     nav {
       position: fixed;
       top: 0;
       right: 0;
+      left: 0;
       background: #fff;
       height: 60px;
       padding: 0 1.5rem;
       box-shadow: 0 2px 8px #ddd;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: flex-start; /* Align from left for logo visibility */
       gap: 1.5rem;
       z-index: 50;
-      width: auto; /* adjust as needed */
-      min-width: 280px;
+      max-width: 1200px;
+      margin: 0 auto;
+      box-sizing: border-box;
     }
     .logo {
-      margin-right: auto;
+      flex-shrink: 0; /* Prevent shrinking */
       font-weight: 700;
       font-size: 1.7rem;
       color: #ad6d15;
       cursor: default;
       user-select: none;
+      white-space: nowrap; /* Prevent wrapping */
+      margin-right: auto; /* Push nav links right */
+      padding-left: 0.5rem;
     }
     .nav-links {
       display: flex;
@@ -77,10 +82,13 @@
 
     @media (max-width: 900px) {
       nav {
-        min-width: 100%;
-        width: 100%;
-        padding: 0 2rem;
+        padding: 0 1rem;
         justify-content: space-between;
+        max-width: 100%;
+      }
+      .logo {
+        margin-right: 0;
+        font-size: 1.5rem;
       }
       .nav-links {
         position: fixed;
@@ -114,9 +122,6 @@
       .hamburger {
         display: block;
       }
-      .logo {
-        margin-right: 0;
-      }
     }
 
     section {
@@ -145,6 +150,7 @@
     }
     #home h1 {
       font-size: 2.2rem;
+      margin: 0;
     }
     .typewriter {
       font-size: 1.5rem;
@@ -171,9 +177,10 @@
       border: 2px solid #ad6d15;
     }
     .social-icons {
-      margin: 1.2rem 0;
       display: flex;
       gap: 1rem;
+      justify-content: center; /* Center aligned */
+      margin: 1.2rem 0;
     }
     .social-icons a {
       display: inline-flex;
